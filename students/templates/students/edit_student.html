@@ -1,0 +1,64 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow-lg" style="width: 500px;">
+    <div class="card-header bg-warning text-dark fw-bold">
+      ✏️ Edit Student
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+
+        <!-- Name -->
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          {{ form.name }}
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          {{ form.email }}
+          <small class="form-text text-muted">
+            Must include @ and domain (e.g., student@example.com).
+          </small>
+        </div>
+
+        <!-- Mobile -->
+        <div class="mb-3">
+          <label class="form-label">Mobile Number</label>
+          {{ form.mobile }}
+          <small class="form-text text-muted">
+            Must be exactly 10 digits (numbers only).
+          </small>
+        </div>
+
+        <!-- Passed Out -->
+        <div class="mb-3">
+          <label class="form-label">Passed Out</label>
+          {{ form.passed_out }}
+        </div>
+
+        <!-- Course -->
+        <div class="mb-3">
+          <label class="form-label">Course</label>
+          {{ form.course }}
+        </div>
+
+        <!-- Attendance -->
+        <div class="mb-3">
+          <label class="form-label">Attendance</label>
+          {{ form.is_present }}
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-warning w-100">Update Student</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary w-100 mt-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
